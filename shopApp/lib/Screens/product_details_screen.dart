@@ -11,7 +11,7 @@ class DetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Description"),
+        title: Text(productId),
       ),
       body: Text("Details page"),
     );
