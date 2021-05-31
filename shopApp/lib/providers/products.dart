@@ -44,7 +44,7 @@ class Products with ChangeNotifier {
   // var _showFavoritesOnly = false;
   final String authtoken;
 
-  Products(this.authtoken);
+  Products(this.authtoken, this._items);
 
   List<Product> get items {
     // if (_showFavoritesOnly) {
@@ -72,11 +72,13 @@ class Products with ChangeNotifier {
   // }
 
   Future<void> fetchAndSetProducts() async {
-    final url = 'https://flutter-update.firebaseio.com/products.json?auth$authtoken';
+    final _params = <String,String>{'auth': authtoken};
+    final url = Uri.https('flutter-update.firebaseio.com', '/products.json/', _params);
     try {
-      final response = await http.get(url);
+      final response = await http.get(url).timeout(Duration(seconds: 10));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
-      if (extractedData == null) {
+      if (extractedData == null || extractedData['error'] != null) {
+        print('null check');
         return;
       }
       final List<Product> loadedProducts = [];
