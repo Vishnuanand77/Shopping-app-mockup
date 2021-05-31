@@ -26,10 +26,8 @@ class UserProductItem extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.edit),
               onPressed: () {
-                Navigator.of(context).pushNamed(
-                  EditProductScreen.routeName,
-                  arguments: id,
-                );
+                Navigator.of(context)
+                    .pushNamed(EditProductScreen.routeName, arguments: id);
               },
               color: Theme.of(context).primaryColor,
             ),
@@ -40,12 +38,11 @@ class UserProductItem extends StatelessWidget {
                   await Provider.of<Products>(context, listen: false)
                       .deleteProduct(id);
                 } catch (error) {
-                  scaffold.showSnackBar(SnackBar(
-                    content: Text(
-                      'Deleting failed',
-                      textAlign: TextAlign.center,
+                  scaffold.showSnackBar(
+                    SnackBar(
+                      content: Text('Deleting failed!', textAlign: TextAlign.center,),
                     ),
-                  ));
+                  );
                 }
               },
               color: Theme.of(context).errorColor,

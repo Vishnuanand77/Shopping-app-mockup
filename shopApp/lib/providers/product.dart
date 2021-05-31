@@ -21,7 +21,7 @@ class Product with ChangeNotifier {
   });
 
   void _setFavValue(bool newValue) {
-    isFavorite = newValue; //Rollback
+    isFavorite = newValue;
     notifyListeners();
   }
 
@@ -29,7 +29,7 @@ class Product with ChangeNotifier {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
-    final url = 'https://shopappflutter-c7b80.firebaseio.com/products/$id.json';
+    final url = 'https://flutter-update.firebaseio.com/products/$id.json';
     try {
       final response = await http.patch(
         url,

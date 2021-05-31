@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:shopApp/models/http_exception.dart';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/http_exception.dart';
 import './product.dart';
 
 class Products with ChangeNotifier {
@@ -40,25 +41,24 @@ class Products with ChangeNotifier {
     //       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     // ),
   ];
-
   // var _showFavoritesOnly = false;
 
   List<Product> get items {
-    // if(_showFavoritesOnly){
-    //   return _items.where((element) => element.isFavorite).toList();
+    // if (_showFavoritesOnly) {
+    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
     // }
     return [..._items];
   }
 
   List<Product> get favoriteItems {
-    return _items.where((element) => element.isFavorite).toList();
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  // void showFavoritesOnly(){
+  // void showFavoritesOnly() {
   //   _showFavoritesOnly = true;
   //   notifyListeners();
   // }
@@ -69,7 +69,7 @@ class Products with ChangeNotifier {
   // }
 
   Future<void> fetchAndSetProducts() async {
-    const url = 'https://shopappflutter-c7b80.firebaseio.com/products.json';
+    const url = 'https://flutter-update.firebaseio.com/products.json';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -95,7 +95,7 @@ class Products with ChangeNotifier {
   }
 
   Future<void> addProduct(Product product) async {
-    const url = 'https://shopappflutter-c7b80.firebaseio.com/products.json';
+    const url = 'https://flutter-update.firebaseio.com/products.json';
     try {
       final response = await http.post(
         url,
@@ -115,32 +115,34 @@ class Products with ChangeNotifier {
         id: json.decode(response.body)['name'],
       );
       _items.add(newProduct);
+      // _items.insert(0, newProduct); // at the start of the list
       notifyListeners();
     } catch (error) {
-      throw (error);
+      print(error);
+      throw error;
     }
   }
 
   Future<void> updateProduct(String id, Product newProduct) async {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
-      final url =
-          'https://shopappflutter-c7b80.firebaseio.com/products/$id.json';
+      final url = 'https://flutter-update.firebaseio.com/products/$id.json';
       await http.patch(url,
           body: json.encode({
             'title': newProduct.title,
             'description': newProduct.description,
             'imageUrl': newProduct.imageUrl,
-            'price': newProduct.price,
+            'price': newProduct.price
           }));
       _items[prodIndex] = newProduct;
       notifyListeners();
+    } else {
+      print('...');
     }
   }
 
   Future<void> deleteProduct(String id) async {
-    //Using optimistic updating : Roll back if deletion fails.
-    final url = 'https://shopappflutter-c7b80.firebaseio.com/products/$id.json';
+    final url = 'https://flutter-update.firebaseio.com/products/$id.json';
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeAt(existingProductIndex);
@@ -149,7 +151,7 @@ class Products with ChangeNotifier {
     if (response.statusCode >= 400) {
       _items.insert(existingProductIndex, existingProduct);
       notifyListeners();
-      throw HttpException('Could not delete product');
+      throw HttpException('Could not delete product.');
     }
     existingProduct = null;
   }
