@@ -72,12 +72,15 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> fetchAndSetProducts() async {
-    final _params = <String, String>{'auth': authtoken};
-    var url = Uri.https(
-        'shopappflutter-c7b80.firebaseio.com', '/products.json/', _params);
+  Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
+    //final _params = <String, String>{'auth': authtoken};
+    final filterString =
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
+    var url2 =
+        'https://shopappflutter-c7b80.firebaseio.com/products.json?auth=$authtoken&$filterString';
+    //var url = Uri.https('shopappflutter-c7b80.firebaseio.com', '/products.json/', _params,);
     try {
-      final response = await http.get(url).timeout(Duration(seconds: 10));
+      final response = await http.get(url2).timeout(Duration(seconds: 10));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       //Checking if product exists
       if (extractedData == null || extractedData['error'] != null) {
@@ -85,8 +88,10 @@ class Products with ChangeNotifier {
         return;
       }
       //Getting isFavorite
-      url = Uri.https('shopappflutter-c7b80.firebaseio.com', '/userFavorites/$userId.json', _params);
-      final favoriteResponse = await http.get(url);
+      url2 =
+          'https://shopappflutter-c7b80.firebaseio.com/userFavorites/$userId.json?auth=$authtoken';
+      //url = Uri.https('shopappflutter-c7b80.firebaseio.com', '/userFavorites/$userId.json/', _params);
+      final favoriteResponse = await http.get(url2);
       final favoriteData = json.decode(favoriteResponse.body);
 
       //Loading the data
@@ -97,7 +102,8 @@ class Products with ChangeNotifier {
           title: prodData['title'],
           description: prodData['description'],
           price: prodData['price'],
-          isFavorite: favoriteData == null ? false : favoriteData[prodId] ?? false,
+          isFavorite:
+              favoriteData == null ? false : favoriteData[prodId] ?? false,
           imageUrl: prodData['imageUrl'],
         ));
       });
@@ -119,6 +125,7 @@ class Products with ChangeNotifier {
           'description': product.description,
           'imageUrl': product.imageUrl,
           'price': product.price,
+          'creatorId': userId,
         }),
       );
       final newProduct = Product(
