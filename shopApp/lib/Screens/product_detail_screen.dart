@@ -25,10 +25,20 @@ class ProductDetailScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            iconTheme: IconThemeData(color: Colors.black),
             expandedHeight: 300,
+            floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(loadedProduct.title),
+              title: Container(
+                child: Text(
+                  loadedProduct.title,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900
+                  ),
+                ),
+              ),
               background: Hero(
                 tag: loadedProduct.id,
                 child: Image.network(
