@@ -91,14 +91,16 @@ class Auth with ChangeNotifier {
     final sharedPrefs = await SharedPreferences.getInstance();
 
     //If there is nothing stored in shared preferences
-    if (!sharedPrefs.containsKey('userdata')) {
+    if (!sharedPrefs.containsKey('userData')) {
+      print("No Key found. Could not AutoLogin");
       return false;
     }
     final extractedUserData = json.decode(sharedPrefs.get('userData')) as Map<String, Object>;
     final expiryDate = DateTime.parse(extractedUserData['expiryDate']);
 
     //Checking if token has expired
-    if (expiryDate.isAfter(DateTime.now())) {
+    if (expiryDate.isBefore(DateTime.now())) {
+      print("Token Expired. Could not AutoLogin");
       return false;
     }
 
