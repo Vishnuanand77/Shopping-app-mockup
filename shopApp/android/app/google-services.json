@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "673182640263",
+    "firebase_url": "https://shopappflutter-c7b80.firebaseio.com",
+    "project_id": "shopappflutter-c7b80",
+    "storage_bucket": "shopappflutter-c7b80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673182640263:android:473f08d841827dfb44f022",
+        "android_client_info": {
+          "package_name": "com.example.shopApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673182640263-vpcavpkfbbg58po9mt27cvpbd12h5n30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA-SkHHKYtESXgcPYi7nYiTRAlcUfKucE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673182640263-vpcavpkfbbg58po9mt27cvpbd12h5n30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
