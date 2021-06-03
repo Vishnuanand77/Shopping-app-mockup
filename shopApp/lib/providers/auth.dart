@@ -114,7 +114,7 @@ class Auth with ChangeNotifier {
     return true;
   }
 
-  void logout() {
+  Future<void> logout() async {
     _token = null;
     _userId = null;
     _expiryDate = null;
@@ -123,6 +123,13 @@ class Auth with ChangeNotifier {
       _authTimer = null;
     }
     notifyListeners();
+
+    //Deleting shared preferences information
+    final sharedPrefs = await SharedPreferences.getInstance();
+    //sharedPrefs.remove('userData'); //To remove specific keys
+
+    //Since we only store user data on shared prefs we can do the following:
+    sharedPrefs.clear(); //Removes everything in shared prefs
   }
 
   void _autoLogout() {
