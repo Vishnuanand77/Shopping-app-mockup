@@ -72,6 +72,7 @@ class Auth with ChangeNotifier {
         },
       );
       sharedPrefs.setString('userData', userData);
+      print(userData);
     } catch (error) {
       throw error;
     }
