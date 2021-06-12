@@ -27,7 +27,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -69,20 +68,12 @@ To run this application, you need the latest version of flutter
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Vishnuanand77/NetWorthApp.git
+   git clone https://github.com/Vishnuanand77/Shopping-app-mockup.git
    ```
 2. Running the application on emulator
    ```sh
    flutter run
    ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-<p align = "center">
-<img src="images/AppConcept.gif" width = 270 height = 480>
-
 
 ## License
 See `LICENSE` for more information.
@@ -92,22 +83,11 @@ See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Vishnu Anand - [@twitter_handle](https://twitter.com/vishnuanand2000) - vishnuanand2000@gmail.com
+<p> 
+<h2>Vishnu Anand</h2>
+</p>
+    Twitter : [@vishnuanand2000](https://twitter.com/vishnuanand2000) <br>
+    Instagram : [@yesvisnu](https://www.instagram.com/yesvisnu/) <br>
+    Email : vishnuanand2000@gmail.com
 
-Project Link: [https://github.com/Vishnuanand77/NetWorthApp.git](https://github.com/Vishnuanand77/NetWorthApp.git)
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+Project Link: [https://github.com/Vishnuanand77/Shopping-app-mockup.git](https://github.com/Vishnuanand77/Shopping-app-mockup.git)
