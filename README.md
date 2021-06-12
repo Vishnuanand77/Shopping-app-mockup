@@ -2,10 +2,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Net Worth Calculator</h1>
+  <h1 align="center">Shopping App Mock</h1>
 
   <p align="center">
-    Calculate your networth on tap of a button!
+    A mockup of a shopping app
 </p>
 
 
@@ -28,7 +28,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -37,12 +36,16 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-A net worth calculator that inputs the user's assets and liabilities to calculate their net worth.
+A simple mock of a shopping application that works with firebase.
+I made this application while learning a flutter course. 
+This application was built to understand how flutter works with firebase technologies like realtime database and cloud storage.
+I also applied self-taught animations and material UI on many of the widgets.
 
 ### Built With
 
 * []() Flutter
 * []() Dart
+* []() Firebase
 * []() VS code
 
 
